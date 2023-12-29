@@ -47,13 +47,6 @@ This repository contains a comprehensive example of token-based authentication u
 
 5. Access the application at [http://localhost:8080](http://localhost:8080).
 
-## Screenshots
-
-![Screenshot 1](/path/to/screenshot1.png)
-*Caption for Screenshot 1.*
-
-![Screenshot 2](/path/to/screenshot2.png)
-*Caption for Screenshot 2.*
 
 ## Contributing
 
