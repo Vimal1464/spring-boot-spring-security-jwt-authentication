@@ -18,10 +18,18 @@ import java.io.PrintWriter;
 
 @Component
 public class JWTAuthenticationEntryPoint implements AuthenticationEntryPoint {
+    private Logger logger = LoggerFactory.getLogger(JWTAuthenticationEntryPoint.class);
 
     @Override
     public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException) throws IOException, ServletException {
         response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+
+        // Log the authentication exception
+        logger.error("Authentication failed: " + authException.getMessage(), authException);
+
+        // Send an error response
         PrintWriter writer = response.getWriter();
+        writer.println("Authentication failed: " + authException.getMessage());
     }
+
 }

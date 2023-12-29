@@ -5,6 +5,7 @@ import com.vimal.code.ToDo.config.SecurityConfig;
 import com.vimal.code.ToDo.dto.req.UserRequestDto;
 import com.vimal.code.ToDo.dto.resp.UserResponseDto;
 import com.vimal.code.ToDo.enitiy.UserEnitiy;
+import com.vimal.code.ToDo.exp.UserAlreadyExistsException;
 import com.vimal.code.ToDo.repo.UserRepo;
 import com.vimal.code.ToDo.service.UserService;
 import org.modelmapper.ModelMapper;
@@ -15,6 +16,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -48,11 +50,18 @@ public class UserImp implements UserService {
     }
     @Override
     public UserResponseDto createUser(UserRequestDto userRequestDto) {
-        UserEnitiy user = this.userReqDtoToUserEntity(userRequestDto);
-        user.setPassword(authConfig.passwordEncoder().encode(user.getPassword()));
-        UserEnitiy createdUser = userRepo.save(user);
-        return this.userEntityToUserRespDto(createdUser);
+        Optional<UserEnitiy> foundUser = this.userRepo.findByEmail(userRequestDto.getEmail());
+        if (foundUser.isEmpty()) {
+            UserEnitiy user = this.userReqDtoToUserEntity(userRequestDto);
+            user.setPassword(authConfig.passwordEncoder().encode(user.getPassword()));
+            UserEnitiy createdUser = userRepo.save(user);
+            return this.userEntityToUserRespDto(createdUser);
+        } else {
+            // User already exists, throw an exception
+            throw new UserAlreadyExistsException("User with email " + userRequestDto.getEmail() + " already exists");
+        }
     }
+
 
     public UserEnitiy userReqDtoToUserEntity(UserRequestDto userReqDto){
         UserEnitiy user = this.modelMapper.map(userReqDto,UserEnitiy.class);
