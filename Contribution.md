@@ -2,7 +2,7 @@
 
 [![GitHub Repository](https://img.shields.io/badge/GitHub-Repository-blueviolet.svg)](https://github.com/Vimal1464/spring-boot-spring-security-jwt-authentication)
 
-👯 I'm looking to collaborate on the Spring Boot JWT Authentication project. Feel free to check out the [GitHub Repository](https://github.com/Vimal1464/spring-boot-spring-security-jwt-authentication) for more details.
+👯 I'm looking for collaborate on the Spring Boot JWT Authentication project. Feel free to check out the [GitHub Repository](https://github.com/Vimal1464/spring-boot-spring-security-jwt-authentication) for more details.
 
 ## How to Contribute
 
