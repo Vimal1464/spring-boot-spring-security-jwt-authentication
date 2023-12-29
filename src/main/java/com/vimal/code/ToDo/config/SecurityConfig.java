@@ -29,8 +29,10 @@ public class SecurityConfig {
         http.csrf(csrf -> csrf.disable())
                 .cors(cors -> cors.disable())
                 .authorizeHttpRequests(authorizeHttpRequests -> authorizeHttpRequests.
-                        requestMatchers("/home").authenticated().
+                        requestMatchers("/user").authenticated().
+                        requestMatchers("/home").permitAll().
                         requestMatchers("/auth/login").permitAll().
+                        requestMatchers("/auth/create").permitAll().
                         anyRequest().authenticated())
                 .exceptionHandling(exceptionHandling -> exceptionHandling.authenticationEntryPoint(jwtAuthenticationEntryPoint)) // if any exception came
                 .sessionManagement(sessionManagement -> sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS)); // nothing to save on server
