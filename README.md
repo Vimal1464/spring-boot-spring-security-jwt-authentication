@@ -27,27 +27,28 @@ This repository contains a comprehensive example of token-based authentication u
 
 1. Clone the repository:
 
-    ```bash
-    git clone https://github.com/yourusername/spring-boot-security-jwt-example.git
-    ```
+   ```bash
+   git clone https://github.com/Vimal1464/spring-boot-security-jwt-example.git
+   ```
 
 2. Navigate to the project directory:
 
-    ```bash
-    cd spring-boot-security-jwt-example
-    ```
+   ```bash
+   cd spring-boot-security-jwt-example
+   ```
 
 3. Configure MySQL database properties in `src/main/resources/application.properties`.
 
 4. Build and run the application:
 
-    ```bash
-    mvn spring-boot:run
-    ```
+   ```bash
+   mvn spring-boot:run
+   ```
 
 5. Access the application at [http://localhost:8080](http://localhost:8080).
-
 
 ## Contributing
 
 Contributions are welcome! Feel free to open issues and pull requests.
+
+## Vimal This Side Signing off
